@@ -1,0 +1,4 @@
+PyInquirer==1.0.3
+psutil==5.5.1
+pylint==2.6.0
+pyudev==0.22.0
