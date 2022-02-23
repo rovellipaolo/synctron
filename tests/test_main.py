@@ -55,7 +55,7 @@ class TestMain(unittest.TestCase):
         mock_parse_args.assert_called_once()
         mock_prompt_source_directory.assert_called_once()
         mock_prompt_included_and_excluded_directories.assert_called_once_with(self.ANY_SOURCE)
-        mock_prompt_destination_directory.assert_called_once_with(self.ANY_SOURCE, self.ANY_DESTINATION_ROOT)
+        mock_prompt_destination_directory.assert_called_once_with(self.ANY_DESTINATION_ROOT)
         mock_prompt_backup.assert_called_once_with(self.ANY_SOURCE, self.ANY_DESTINATION, excluded=self.ANY_EXCLUDED)
 
     @patch('synctron.prompt_backup')

@@ -9,9 +9,7 @@ class TestPromptDestinationDirectory(unittest.TestCase):
     Test prompt_destination_directory method.
     """
 
-    ANY_SOURCE_BASENAME = "any-source"
-    ANY_SOURCE = f"any-path/{ANY_SOURCE_BASENAME}"
-    ANY_DESTINATION_ROOT = "any-destination-root"
+    ANY_DESTINATION = "any-destination-root"
     ANY_DRIVE = "any-drive"
     ANY_OTHER_DRIVE = "any-other-drive"
 
@@ -25,15 +23,15 @@ class TestPromptDestinationDirectory(unittest.TestCase):
         mock_get_mounted_drives.return_value = [self.ANY_DRIVE, self.ANY_OTHER_DRIVE]
         mock_prompt_single_selection.return_value = self.ANY_DRIVE
 
-        result = prompt_destination_directory(self.ANY_SOURCE, self.ANY_DESTINATION_ROOT)
+        result = prompt_destination_directory(self.ANY_DESTINATION)
 
         self.assertEqual(self.ANY_DRIVE, result)
         mock_get_mounted_drives.assert_called_once()
         mock_prompt_single_selection.assert_called_once_with(
             question="Select the destination directory to store the backup:",
             options = [
-                f"{self.ANY_DRIVE}/{self.ANY_DESTINATION_ROOT}/{self.ANY_SOURCE_BASENAME}",
-                f"{self.ANY_OTHER_DRIVE}/{self.ANY_DESTINATION_ROOT}/{self.ANY_SOURCE_BASENAME}"
+                f"{self.ANY_DRIVE}/{self.ANY_DESTINATION}",
+                f"{self.ANY_OTHER_DRIVE}/{self.ANY_DESTINATION}"
             ]
         )
 
@@ -45,7 +43,7 @@ class TestPromptDestinationDirectory(unittest.TestCase):
         mock_get_mounted_drives.return_value = []
 
         with self.assertRaises(SystemExit) as result:
-            prompt_destination_directory(self.ANY_SOURCE, self.ANY_DESTINATION_ROOT)
+            prompt_destination_directory(self.ANY_DESTINATION)
 
         self.assertEqual(1, result.exception.code)
         mock_get_mounted_drives.assert_called_once()

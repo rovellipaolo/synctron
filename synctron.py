@@ -37,10 +37,7 @@ def main():
     logger.debug(f"Included directories: {included}")
     logger.debug(f"Excluded directories: {excluded}")
 
-    destination = prompt_destination_directory(
-        source,
-        args.destination_root
-    ) if args.destination is None else args.destination
+    destination = prompt_destination_directory(args.destination_root) if args.destination is None else args.destination
     logger.debug(f"Destination directory: {destination}")
 
     prompt_backup(source, destination, excluded=excluded)
@@ -76,14 +73,14 @@ def prompt_included_and_excluded_directories(source: str) -> tuple:
     return included, excluded
 
 
-def prompt_destination_directory(source, destination_root) -> str:
+def prompt_destination_directory(destination) -> str:
     drives = get_mounted_drives()
     if len(drives) == 0:
         logger.error("No drive could be found! Try to execute with '-v' option.")
         sys.exit(1)
     return prompt_single_selection(
         question="Select the destination directory to store the backup:",
-        options=[path.join(directory, destination_root, path.basename(source)) for directory in drives]
+        options=[path.join(directory, destination) for directory in drives]
     )
 
 
