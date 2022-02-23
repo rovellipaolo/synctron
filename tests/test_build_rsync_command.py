@@ -55,7 +55,7 @@ class TestBuildRsyncCommand(unittest.TestCase):
             ["rsync", "-acEhivX", "--delete", "--dry-run", "--exclude", "any-excluded", "--exclude", "any-other-excluded", "any-source", "any-destination"]
         ],
     ])
-    def test_happy_case(
+    def test_build(
             self,
             any_source,
             any_destination,

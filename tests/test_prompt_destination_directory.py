@@ -15,11 +15,7 @@ class TestPromptDestinationDirectory(unittest.TestCase):
 
     @patch('synctron.prompt_single_selection')
     @patch('synctron.get_mounted_drives')
-    def test_happy_case(
-            self,
-            mock_get_mounted_drives,
-            mock_prompt_single_selection
-    ):
+    def test_happy_case(self, mock_get_mounted_drives, mock_prompt_single_selection):
         mock_get_mounted_drives.return_value = [self.ANY_DRIVE, self.ANY_OTHER_DRIVE]
         mock_prompt_single_selection.return_value = self.ANY_DRIVE
 
@@ -36,10 +32,7 @@ class TestPromptDestinationDirectory(unittest.TestCase):
         )
 
     @patch('synctron.get_mounted_drives')
-    def test_no_mounted_drive_found(
-            self,
-            mock_get_mounted_drives
-    ):
+    def test_no_mounted_drive_found(self, mock_get_mounted_drives):
         mock_get_mounted_drives.return_value = []
 
         with self.assertRaises(SystemExit) as result:

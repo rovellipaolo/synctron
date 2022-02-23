@@ -66,9 +66,9 @@ $ make test-coverage
 
 The following is an example of running Synctron against a sample directory.
 ```
-$ synctron -s test/data/home/user/ -d test/data/backup/user/
+$ synctron -s tests/data/home/user/ -d tests/data/backup/user/
 
-? Select the source sub-directories to be backed up:  (<up>, <down> to move, <space> to select, <a> to toggle, <i> to invert)
+? Select the source subdirectories to be backed up:  (<up>, <down> to move, <space> to select, <a> to toggle, <i> to invert)
   ○ .hidden.txt
   ● new.txt
   ● NEW

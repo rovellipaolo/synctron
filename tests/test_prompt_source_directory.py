@@ -14,11 +14,7 @@ class TestPromptSourceDirectory(unittest.TestCase):
 
     @patch('synctron.prompt_single_selection')
     @patch('synctron.get_home_directories')
-    def test_happy_case(
-            self,
-            mock_get_home_directories,
-            mock_prompt_single_selection
-    ):
+    def test_happy_case(self, mock_get_home_directories, mock_prompt_single_selection):
         mock_get_home_directories.return_value = [self.ANY_DIRECTORY, self.ANY_OTHER_DIRECTORY]
         mock_prompt_single_selection.return_value = self.ANY_DIRECTORY
 
@@ -32,10 +28,7 @@ class TestPromptSourceDirectory(unittest.TestCase):
         )
 
     @patch('synctron.get_home_directories')
-    def test_no_home_directory_found(
-            self,
-            mock_get_home_directories
-    ):
+    def test_no_home_directory_found(self, mock_get_home_directories):
         mock_get_home_directories.return_value = []
 
         with self.assertRaises(SystemExit) as result:

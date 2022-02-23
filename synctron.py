@@ -61,12 +61,13 @@ def prompt_included_and_excluded_directories(source: str) -> tuple:
     NOTE: This will exclude both directories in the root and in subdirectories
     (e.g. "exclude" => "test/backup/user/excluded/" + "test/backup/user/NEW/excluded/")
     """
-    directories = get_subdirectories(source)
+    directories = listdir(source)
+    logger.debug(f"Subdirectories: {directories}")
     if len(directories) == 0:
-        logger.error("No home sub-directory could be found! Try to execute with '-v' option.")
+        logger.error("No home subdirectory could be found! Try to execute with '-v' option.")
         sys.exit(1)
     included = prompt_multiple_selection(
-        question="Select the source sub-directories to be backed up:",
+        question="Select the source subdirectories to be backed up:",
         options=directories
     )
     excluded = [directory for directory in directories if not directory in included]
@@ -102,14 +103,6 @@ def get_home_directories() -> list:
     except RuntimeError:
         logger.debug(traceback.format_exc())
     logger.debug(f"Home directories: {dirs}")
-    return dirs
-
-
-def get_subdirectories(root) -> list:
-    dirs = []
-    for file in listdir(root):
-        dirs.append(file)
-    logger.debug(f"Sub-directories: {dirs}")
     return dirs
 
 
