@@ -8,6 +8,7 @@ Synctron is a simple home directory backup tool built on top of rsync.
 [![Language Grade: LGTM.com](https://img.shields.io/lgtm/grade/python/g/rovellipaolo/synctron.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/rovellipaolo/synctron/context:python)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+![Synctron](docs/images/synctron.gif "Screencast of Synctron")
 
 
 ## Overview
