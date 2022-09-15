@@ -11,7 +11,7 @@ build:
 # Install:
 .PHONY: install
 install:
-	sudo ln -s $(SYNCTRON_HOME)/synctron.py /usr/local/bin/synctron
+	sudo ln -s ${SYNCTRON_HOME}/synctron.py /usr/local/bin/synctron
 
 .PHONY: uninstall
 uninstall:
