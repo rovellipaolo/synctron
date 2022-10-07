@@ -7,6 +7,10 @@ SYNCTRON_HOME := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 build:
 	@pip3 install -r requirements.txt
 
+.PHONY: generate-checkstyle-config
+generate-checkstyle-config:
+	pylint --generate-rcfile > .pylintrc
+
 
 # Install:
 .PHONY: install

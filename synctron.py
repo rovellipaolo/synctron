@@ -113,7 +113,7 @@ def get_mounted_drives() -> list:
         logger.debug(f"Device: {device.device_node} ({device.get('ID_FS_LABEL', '-')}, {device.get('ID_FS_TYPE')})")
     drives = []
     for partition in psutil.disk_partitions():
-        if partition.device in devices.keys():
+        if partition.device in devices:
             drives.append(partition.mountpoint)
             logger.debug(f"Mounted: {partition.device} ({devices[partition.device]}) --> {partition.mountpoint}")
     return drives
