@@ -28,7 +28,7 @@ $ git clone https://github.com/rovellipaolo/synctron
 $ cd synctron
 ```
 
-To execute Synctron, you need `Python 3.6` or higher installed.
+To execute Synctron, you need `Python 3.8` or higher installed.
 Just launch the following commands, which will install all the needed Python dependencies and add a `synctron` symlink to `/usr/local/bin/`.
 
 ```
