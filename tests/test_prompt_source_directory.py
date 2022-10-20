@@ -24,7 +24,7 @@ class TestPromptSourceDirectory(unittest.TestCase):
         mock_get_home_directories.assert_called_once()
         mock_prompt_single_selection.assert_called_once_with(
             question="Select the source directory to be backed up:",
-            options = [self.ANY_DIRECTORY, self.ANY_OTHER_DIRECTORY]
+            options=[self.ANY_DIRECTORY, self.ANY_OTHER_DIRECTORY]
         )
 
     @patch('synctron.get_home_directories')

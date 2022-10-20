@@ -25,7 +25,7 @@ class TestPromptDestinationDirectory(unittest.TestCase):
         mock_get_mounted_drives.assert_called_once()
         mock_prompt_single_selection.assert_called_once_with(
             question="Select the destination directory to store the backup:",
-            options = [
+            options=[
                 f"{self.ANY_DRIVE}/{self.ANY_DESTINATION}",
                 f"{self.ANY_OTHER_DRIVE}/{self.ANY_DESTINATION}"
             ]

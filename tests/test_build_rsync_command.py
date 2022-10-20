@@ -45,14 +45,35 @@ class TestBuildRsyncCommand(unittest.TestCase):
             "any-destination",
             ["any-excluded", "any-other-excluded"],
             False,
-            ["rsync", "-acEhivX", "--delete", "--exclude", "any-excluded", "--exclude", "any-other-excluded", "any-source", "any-destination"]
+            [
+                "rsync",
+                "-acEhivX",
+                "--delete",
+                "--exclude",
+                "any-excluded",
+                "--exclude",
+                "any-other-excluded",
+                "any-source",
+                "any-destination"
+            ]
         ],
         [
             "any-source",
             "any-destination",
             ["any-excluded", "any-other-excluded"],
             True,
-            ["rsync", "-acEhivX", "--delete", "--dry-run", "--exclude", "any-excluded", "--exclude", "any-other-excluded", "any-source", "any-destination"]
+            [
+                "rsync",
+                "-acEhivX",
+                "--delete",
+                "--dry-run",
+                "--exclude",
+                "any-excluded",
+                "--exclude",
+                "any-other-excluded",
+                "any-source",
+                "any-destination"
+            ]
         ],
     ])
     def test_build(

@@ -30,7 +30,7 @@ class TestPromptIncludedAndExcludedDirectories(unittest.TestCase):
         mock_listdir.assert_called_once_with(self.ANY_SOURCE)
         mock_prompt_multiple_selection.assert_called_once_with(
             question="Select the source subdirectories to be backed up:",
-            options = [self.ANY_DIRECTORY, self.ANY_OTHER_DIRECTORY]
+            options=[self.ANY_DIRECTORY, self.ANY_OTHER_DIRECTORY]
         )
 
     @patch('synctron.listdir')

@@ -49,4 +49,5 @@ test-coverage:
 
 .PHONY: checkstyle
 checkstyle:
+	pycodestyle --max-line-length=120 synctron.py tests/
 	pylint synctron.py tests/

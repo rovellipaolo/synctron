@@ -70,7 +70,7 @@ def prompt_included_and_excluded_directories(source: str) -> tuple:
         question="Select the source subdirectories to be backed up:",
         options=directories
     )
-    excluded = [directory for directory in directories if not directory in included]
+    excluded = [directory for directory in directories if directory not in included]
     return included, excluded
 
 
@@ -166,7 +166,7 @@ def prompt_multiple_selection(question: str, options: list) -> list:
     return answers["choices"] if "choices" in answers else []
 
 
-def build_rsync_command(source: str, destination: str, excluded: list, dry_run: bool=True) -> list:
+def build_rsync_command(source: str, destination: str, excluded: list, dry_run: bool = True) -> list:
     # -a, --archive           archive mode; equals -rlptgoD (no -H,-A,-X)
     # -c, --checksum          skip based on checksum, not mod-time & size
     # --exclude = PATTERN     exclude files matching PATTER
@@ -187,7 +187,7 @@ def build_rsync_command(source: str, destination: str, excluded: list, dry_run: 
     return command
 
 
-def run_rsync(source: str, destination: str, excluded: list, dry_run: bool=True) -> str:
+def run_rsync(source: str, destination: str, excluded: list, dry_run: bool = True) -> str:
     command = build_rsync_command(source, destination, excluded, dry_run)
     logger.debug(f"Execute: {' '.join(command)}")
     output = run(command, check=True, capture_output=True, text=True)
