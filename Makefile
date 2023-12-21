@@ -5,11 +5,12 @@ SYNCTRON_HOME := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 # Build:
 .PHONY: build
 build:
-	@pip3 install -r requirements.txt
+	@which pipenv || pip3 install pipenv
+	@pipenv install --dev
 
 .PHONY: generate-checkstyle-config
 generate-checkstyle-config:
-	pylint --generate-rcfile > .pylintrc
+	@pipenv run pylint --generate-rcfile > .pylintrc
 
 
 # Install:
@@ -34,20 +35,20 @@ uninstall-githooks:
 # Run:
 .PHONY: run
 run:
-	@python3 synctron.py
+	@pipenv run python3 synctron.py
 
 
 # Test:
 .PHONY: test
 test:
-	@python3 -m unittest
+	@pipenv run python3 -m unittest
 
 .PHONY: test-coverage
 test-coverage:
-	@coverage3 run --source=. --omit="tests/*" -m unittest
-	@coverage3 report
+	@pipenv run coverage3 run --source=. --omit="tests/*" -m unittest
+	@pipenv run coverage3 report
 
 .PHONY: checkstyle
 checkstyle:
-	pycodestyle --max-line-length=120 synctron.py tests/
-	pylint synctron.py tests/
+	@pipenv run pycodestyle --max-line-length=120 synctron.py tests/
+	@pipenv run pylint synctron.py tests/

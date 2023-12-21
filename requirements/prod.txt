@@ -1,3 +1,0 @@
-PyInquirer==1.*
-psutil==5.*
-pyudev==0.*
