@@ -10,6 +10,7 @@ Synctron is a simple home directory backup tool built on top of rsync.
 ![Synctron](docs/images/synctron.gif "Screencast of Synctron")
 
 
+
 ## Overview
 
 Synctron uses `rsync` to back up home directories.
@@ -18,7 +19,7 @@ Note that, at present, this is not designed to be a generic rsync frontend but j
 
 
 
-## Installation
+## Build
 
 The first step is cloning the Synctron repository, or downloading its source code.
 
@@ -38,31 +39,22 @@ $ synctron --help
 
 
 
-## Checkstyle
+## Test
 
-Once you've configured it (see the _"Installation"_ section), to run the checkstyle manually launch the following command:
-```
-$ make checkstyle
-```
-**NOTE:** This is using [`pylint`](https://github.com/PyCQA/pylint) under-the-hood.
-
-You can also run the checkstyle automatically at every git commit by launching the following command:
-```
-$ make install-githooks
-```
-
-
-
-## Tests
-
-Once you've configured it (see the _"Installation"_ section), to run the tests manually launch the following command:
-```
+Once you've configured it (see the _"Installation"_ section), to run the tests and checkstyle manually launch the following command:
+```shell
 $ make test
+$ make checkstyle
 ```
 
 You can also run the tests with coverage by launching the following command:
-```
+```shell
 $ make test-coverage
+```
+
+And/or configure the checkstyle to run automatically at every git commit by launching the following command:
+```shell
+$ make install-githooks
 ```
 
 
